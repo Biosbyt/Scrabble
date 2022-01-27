@@ -7,6 +7,7 @@
 int POINTS[] = {1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};
 
 int compute_score(string word);
+int summe = 0;
 
 int main(void)
 {
@@ -15,23 +16,22 @@ int main(void)
     string word2 = get_string("Player 2: ");
 
     // Score both words
-
-
     int score1 = compute_score(word1);
     int score2 = compute_score(word2);
 
     // TODO: Print the winner
 
-    if (score1 > score2){
+    if (score1 > score2)
+    {
         printf("Player 1 wins!\n");
     }
-    if (score1 < score2){
+    else if (score1 < score2)
+    {
         printf("Player 2 wins!\n");
-
     }
     else if (score1 == score2)
     {
-    printf("Tie!\n");
+        printf("Tie!\n");
     }
 
 }
@@ -39,22 +39,24 @@ int main(void)
 int compute_score(string word)
 {
 
-int score;
-int n = strlen(word);
+    int score = 0;
+    int n = strlen(word); // gets max string length
 
-for (int i = 0; i < n; i++){
+    for (int i = 0; i < n; i++){  // as long as i smaller n keep counting.
     if (isupper(word[i])){
-        score += POINTS[(word[i]) - 65];
+        score += POINTS[(word[i]) - 65]; // if the letter is Uppercase - score is score + POINTS in Array at the position i - 65 ASCII
     }
     if (islower(word[i])){
-        score += POINTS[(word[i]) - 97];
+        score += POINTS[(word[i]) - 97]; // same for lower -97 for ASCII
 
     }
-    else (score = 0);
+
+}
+
+
+return score; // return final score
+
 }
 
 
-return score;
-
-}
 
